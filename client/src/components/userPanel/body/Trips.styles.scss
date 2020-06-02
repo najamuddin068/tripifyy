@@ -1,0 +1,27 @@
+.controls-top
+{
+   
+    font-size: 25px;
+    
+   
+    position: absolute;
+    z-index: 1;
+    
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width:105%;
+    left: -1.1em;
+    top: 25vh;
+   
+}
+.trips-container
+{
+    display:'flex'; 
+    flex-direction:'row';
+    .trip-cards
+    {   
+    flex:'1 1 auto';
+    display: flex;
+    }
+}

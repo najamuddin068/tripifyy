@@ -1,0 +1,30 @@
+.feed-header{
+    display: flex;
+    flex-direction: row;
+    background-color: rgba(0,0,0,0) !important;
+    
+    
+}
+.feed-item-container{
+    background-color: #E9ECEF;
+}
+.feed-get-text{
+    box-shadow: 0px 0px 2px 0.1px #c0c0c0;
+    height:95px;
+    border-radius:8px;
+    padding: 10px 15px !important;
+    margin: 7px 0px;
+    display: block;/* or inline-block */
+  text-overflow: ellipsis;
+  word-wrap: break-word;
+  overflow: hidden;
+  max-height: 4.8em;
+  line-height: 1.8em;
+
+    width: 550px;
+}
+.feed-badge{
+   position: relative;
+   top:-5px;
+   border-radius: 20% !important;
+}
