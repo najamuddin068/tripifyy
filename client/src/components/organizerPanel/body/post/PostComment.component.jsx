@@ -10,13 +10,18 @@ import {
   MDBPageNav,
 } from "mdbreact";
 import { Link } from "react-router-dom";
+import PostComponent from "./Post.component";
+import { connect } from "react-redux";
+import {deleteComment} from '../../../../actions/postActions'
 
 class PostComment extends Component {
+  onDelete = (postId,commentId) =>{
+   this.props.deleteComment(postId,commentId)
+  }
   render() {
-      const {comment, postId} = this.props
+      const {comment, postId, auth, post} = this.props
     return (
       <div>
-          {console.log(comment)}
         <MDBContainer>
           
           <MDBMedia className="d-block d-md-flex mt-4">
@@ -34,8 +39,12 @@ class PostComment extends Component {
              
               </div>
              <div> {comment.text}</div>
-             <Link className='red-text' to='' style={{fontSize:'15px', float:'right'}}>delete</Link>
-
+              {console.log(comment.organizer)}
+              {
+                comment.organizer===auth.organizer.id ?
+                <Link className='red-text' onClick={()=>this.onDelete(postId, comment._id)} style={{float:'right'}}>delete</Link>:
+                null
+              }
               
             </MDBMedia>
             </MDBMedia>
@@ -45,4 +54,9 @@ class PostComment extends Component {
   }
 }
 
-export default PostComment;
+const mapStateToProps = state => ({
+  auth: state.auth,
+  post: state.post
+})
+
+export default connect(mapStateToProps, {deleteComment})(PostComment);

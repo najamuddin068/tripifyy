@@ -121,7 +121,7 @@ class Post extends Component {
               <Link onClick={() => this.onLikeClick(post.post._id)}>
                 {post.post.likes ? (
                   post.post.likes.filter(
-                    (like) => like.organizer === auth.organizer.id
+                    like => like.organizer === auth.organizer.id
                   ).length > 0 ? (
                     <>
                       {" "}

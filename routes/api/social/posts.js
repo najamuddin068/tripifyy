@@ -140,9 +140,10 @@ router.post('/like/:id',
         if(req.user.isUser){
             Profile.findOne({ user: req.user.id })
                 .then(profile =>{
+                    console.log
                     Post.findById(req.params.id)
                         .then(post => {
-                            if(post.likes.filter(like => like.user.toString() === req.user.id || like.user.toString() === req.user.id).length>0){
+                            if(post.likes.filter(like => like.user+"" === req.user.id || like.user+"" === req.user.id).length>0){
                                 post.likes.shift({user:req.user.id})
                                 
                                 //return res.status(400).json({alreadyliked:'user already liked'})
@@ -152,14 +153,17 @@ router.post('/like/:id',
                             post.save().then(post => res.json(post))
                             
                         })
-                        .catch(err => res.status(404).json({ postnotfound: 'No post found'}))
+                        .catch(err => 
+                            // res.status(404).json({ postnotfound: 'No post found'})
+                            console.log(err)
+                            )
                 })
             }else if(req.user.isOrganizer){
                 OProfile.findOne({ organizer: req.user.id })
                     .then(profile =>{
                         Post.findById(req.params.id)
                             .then(post => {
-                                if(post.likes.filter(like => like.organizer.toString() === req.user.id || like.user.toString() === req.user.id).length>0){
+                                if(post.likes.filter(like => like.organizer+"" === req.user.id || like.user+"" === req.user.id).length>0){
                                   
                                     post.likes.shift({organizer:req.user.id})
                                     
@@ -172,7 +176,10 @@ router.post('/like/:id',
                                 post.save().then(post => res.json(post))
                                 
                             })
-                            .catch(err => res.status(404).json({ postnotfound: 'No post found'}))
+                            .catch(err =>
+                                 // res.status(404).json({ postnotfound: 'No post found'})
+                            console.log(err)
+                                )
                     })
                 }
 })

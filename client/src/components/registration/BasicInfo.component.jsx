@@ -14,7 +14,7 @@ export class BasicInfo extends Component {
         const {values, handleChange,resetFields, errors} = this.props
 
         return (
-            <div>
+            <div id='basic-info'>
                
                 <MDBRow>
                     <MDBCol>
