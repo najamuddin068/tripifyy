@@ -75,7 +75,7 @@ class CreatePost extends Component {
         const {title,text,image,errors} = this.state
 
         return (
-            <div className='create-post-container'>
+            <div className='create-post-container-organizer'>
                    <div className='post-header'
                     onClick={this.toggleCollapse("basicCollapse")}
                     style={{backgroundColor:this.state.color}}

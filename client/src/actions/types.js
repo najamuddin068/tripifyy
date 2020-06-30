@@ -12,4 +12,7 @@ export const GET_POST = 'GET_POST';
 export const ADD_POST = 'ADD_POST';
 export const DELETE_POST = 'DELETE_POST';
 export const LIKE_POST = 'LIKE_POST';
+export const GET_OPROFILE = 'GET_OPROFILE'; 
+export const PROFILE_OLOADING = 'PROFILE_OLOADING';
+export const CLEAR_CURRENT_OPROFILE = 'CLEAR_CURRENT_OPROFILE';
 

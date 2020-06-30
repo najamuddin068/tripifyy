@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import  OrganizerHeader  from '../../components/organizerPanel/header/OrganizerHeader.component';
-import  UserHome  from '../../components/userPanel/body/UserHome.component';
+import  UserHome  from '../../components/userPanel/body/dashboard/UserHome.component';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import OrganizerSidebar from '../../components/organizerPanel/body/dashboard/OrganizerSidebar.component';
@@ -8,9 +8,13 @@ import OrganizerInboxSidebar from '../../components/organizerPanel/body/dashboar
 import ActiveTrips from '../../components/organizerPanel/body/dashboard/ActiveTrips.component';
 import { MDBRow, MDBCol, MDBContainer } from 'mdbreact';
 import Footer from '../../components/organizerPanel/footer/Footer.component';
+import { getCurrentProfile } from '../../actions/organizerProfileActions'
+import PropTypes from 'prop-types'
+import OrganizerBio from '../../components/organizerPanel/body/dashboard/OrganizerBio.component';
 
 class Organizer extends Component {
     componentDidMount(){
+        this.props.getCurrentProfile();
         if(!this.props.auth.isOrganizer){
             this.props.history.push('/sign-in')
         }
@@ -26,6 +30,7 @@ class Organizer extends Component {
                         <OrganizerInboxSidebar/>
                     </MDBCol>
                     <MDBCol md='8'>
+                        <OrganizerBio/>
                         <ActiveTrips/>
                     </MDBCol>
                 </MDBRow>
@@ -35,8 +40,12 @@ class Organizer extends Component {
         );
     }
 }
+Organizer.propType = {
+    getCurrentProfile: PropTypes.func.isRequired,
+    auth: PropTypes.object.isRequired,
+}
 const mapStateToProps = state => ({
     auth: state.auth,
 })
 
-export default connect(mapStateToProps)(withRouter(Organizer));
+export default connect(mapStateToProps, {getCurrentProfile})(withRouter(Organizer));

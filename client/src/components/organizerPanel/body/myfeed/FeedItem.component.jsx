@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { MDBContainer, MDBCardHeader, MDBIcon, MDBMedia, MDBBadge } from "mdbreact";
+import { MDBContainer, MDBCardHeader, MDBIcon, MDBMedia, MDBBadge, MDBCardFooter} from "mdbreact";
 import './FeedItem.styles.scss'
 import { Link } from 'react-router-dom';
 import {connect} from 'react-redux';
@@ -22,9 +22,7 @@ class FeedItem extends Component {
         return (
             <div>
                  <MDBContainer className='feed-item-container'>
-        <MDBCardHeader className="border-0  font-weight-bold feed-header">
-            
-        </MDBCardHeader>
+        
         <MDBMedia className="p-4 bg-white " style={{borderRadius:'10px'}}>
           <MDBMedia >
             <img className="card-img-100 rounded-circle d-flex z-depth-1 mr-3" src={post.avatar} alt="" />
@@ -74,7 +72,7 @@ class FeedItem extends Component {
           </MDBMedia>
           
         </MDBMedia>
-       
+        
       </MDBContainer>
             </div>
         );

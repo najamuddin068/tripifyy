@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import { MDBNavbar, MDBContainer,MDBDropdownItem, MDBNavbarToggler, MDBCollapse, MDBNavbarNav, MDBNavLink, MDBNavbarBrand, MDBNavItem, MDBBtn, MDBFormInline, MDBIcon, MDBDropdown, MDBDropdownToggle, MDBDropdownMenu, MDBBadge, MDBInputGroup, MDBCol } from 'mdbreact';
 import {logoutOrganizer} from '../../../actions/authActions'
-import { clearCurrentProfile} from '../../../actions/userProfileActions'
 import PropTypes from 'prop-types'
 import {connect} from 'react-redux'
-import { withRouter } from 'react-router-dom';
+import { withRouter } from 'react-router-dom'
+import { clearCurrentProfile } from '../../../actions/organizerProfileActions'
 
 class OrganizerHeader extends Component {
     constructor(props) {
@@ -48,6 +48,7 @@ class OrganizerHeader extends Component {
       onLogOutClick = e =>{
         e.preventDefault();
         this.props.logoutOrganizer(this.props.history);
+        this.props.clearCurrentProfile()
       }
 
     render() {
@@ -137,7 +138,8 @@ class OrganizerHeader extends Component {
 
 OrganizerHeader.propTypes ={
     logoutOrganizer: PropTypes.func.isRequired,
-    auth:PropTypes.object.isRequired
+    auth:PropTypes.object.isRequired,
+    clearCurrentProfile: PropTypes.func.isRequired
   }
   
   const mapStateToProps = state => ({
@@ -145,4 +147,4 @@ OrganizerHeader.propTypes ={
   })
 
 
-export default connect(mapStateToProps,{logoutOrganizer})(withRouter(OrganizerHeader));
+export default connect(mapStateToProps,{logoutOrganizer, clearCurrentProfile})(withRouter(OrganizerHeader));

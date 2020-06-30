@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import CreateProfile from '../../components/userPanel/profile/CreateProfile.component';
 import  UserHeader  from '../../components/userPanel/header/UserHeader.component';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
+import CreateProfile from '../../components/userPanel/body/profile/CreateProfile.component';
 
 class CreateUserProfile extends Component {
 

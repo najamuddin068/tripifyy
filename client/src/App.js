@@ -18,12 +18,14 @@ import {initialState} from './reducers/authReducer'
 import store from './store';
 import PropTypes from 'prop-types'
 import {connect} from 'react-redux'
-import CreateProfile from './components/userPanel/profile/CreateProfile.component';
+import CreateProfile from './components/userPanel/body/profile/CreateProfile.component';
 import CreateUserProfile from './routes/user/CreateUserProfile.route';
 import OrganizerFeed from './routes/organizer/OrganizerFeed.route';
 import Post from './components/organizerPanel/body/post/Post.component';
 import OrganizerPost from './routes/organizer/OrganizerPost.route';
 import Footer from './components/organizerPanel/footer/Footer.component';
+import UserFeed from './routes/user/UserFeed.route';
+import UserPost from './routes/user/UserPost.route';
 
 class App extends Component {
 
@@ -67,6 +69,9 @@ render(){
             <Route exact path='/sign-in' component={withRouter(SignIn)}/>
             <Route exact path='/organizer/myfeed' component={withRouter(OrganizerFeed)}/>
             <Route exact path='/organizer/post/:id' component={withRouter(OrganizerPost)}/>
+            <Route exact path='/user/myfeed' component={withRouter(UserFeed)}/>
+            <Route exact path='/user/post/:id' component={withRouter(UserPost)}/>
+            
             
           </Switch>
     </div>

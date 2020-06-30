@@ -75,9 +75,11 @@ export class UserHeader extends Component {
                
                     <MDBNavbarNav right >
                     <MDBNavItem>
-                    <MDBNavLink to="/dashboard" style={this.style.navLink}><MDBIcon icon="globe" /> Explore </MDBNavLink>
+                    <MDBNavLink to="/user/dashboard" style={this.style.navLink}><MDBIcon icon="globe" /> Explore </MDBNavLink>
                   </MDBNavItem>
-                 
+                  <MDBNavItem>
+                    <MDBNavLink to="/user/myfeed" style={this.style.navLink}><MDBIcon icon="rss-square" /> My Feed </MDBNavLink>
+                  </MDBNavItem>
                     <MDBNavItem>
                     <MDBNavLink to="#" style={this.style.navLink} >
                       <MDBIcon icon="envelope" /> Message<MDBBadge color="danger" className="ml-2">{this.props.message}</MDBBadge></MDBNavLink>

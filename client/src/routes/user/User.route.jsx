@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import  UserHeader  from '../../components/userPanel/header/UserHeader.component';
-import  UserHome  from '../../components/userPanel/body/UserHome.component';
+import  UserHome  from '../../components/userPanel/body/dashboard/UserHome.component';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 class User extends Component {

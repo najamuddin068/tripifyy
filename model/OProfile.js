@@ -18,19 +18,30 @@ const OProfileSchema = new Schema({
     type: String
   },
   rating:{
-    type:Number
+    type:Number,
+    default:5.0
   },
   tripCompletion:{
-    type:Number
+    type:Number,
+    default:100
   },
   onTime:{
-    type:Number
+    type:Number,
+    default:100
   },
   behaviour:{
-    type:Number
+    type:Number,
+    default:100
   },
-  
- 
+  earnedThisMonth: {
+    type:Number,
+    default:0
+  },
+  totalEarned: {
+    type:Number,
+    default:0
+  },
+
   social: {
     twitter: {
       type: String
@@ -43,6 +54,9 @@ const OProfileSchema = new Schema({
     },
     instagram: {
       type: String
+    },
+    google: {
+      type:String
     }
   },
   date: {

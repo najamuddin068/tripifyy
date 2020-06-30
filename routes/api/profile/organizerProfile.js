@@ -127,6 +127,8 @@ router.post(
       if (req.body.facebook) profileFields.social.facebook = req.body.facebook;
       if (req.body.linkedin) profileFields.social.linkedin = req.body.linkedin;
       if (req.body.instagram) profileFields.social.instagram = req.body.instagram;
+      if (req.body.google) profileFields.social.google = req.body.google;
+
   
       OProfile.findOne({ organizer: req.user.id }).then(profile => {
         if (profile) {
