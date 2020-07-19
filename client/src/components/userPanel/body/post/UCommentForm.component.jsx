@@ -22,7 +22,7 @@ componentWillReceiveProps(newProps){
 onSubmit = e => {
     e.preventDefault();
 
-    const {organizer} = this.props.auth
+    const {user} = this.props.auth
     const {postId} = this.props
     
     const newComment = {

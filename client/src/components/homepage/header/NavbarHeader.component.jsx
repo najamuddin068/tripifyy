@@ -27,7 +27,7 @@ class NavbarHeader extends Component {
     render() {
         return (
             <div>
-            <MDBNavbar className='navbar' color="rgba-teal-strong" fixed="top" dark expand="md" scrolling transparent style={{padding:'0px 10px 0px 30px'}}>
+            <MDBNavbar className='navbar' color="bg-dark" fixed="top" dark expand="md" scrolling transparent>
                 <MDBContainer fluid >
               <MDBNavbarBrand href="/" >
                 <span style={{fontWeight:'bold'}}>TRIPifyy</span>
@@ -36,10 +36,10 @@ class NavbarHeader extends Component {
               <MDBCollapse isOpen={this.state.collapse} navbar >
                 <MDBNavbarNav right>
                   <MDBNavItem>
-                    <MDBNavLink to="/register/organizer"><MDBBtn color='link'  style={this.style.anchor}>Become an Organizer</MDBBtn></MDBNavLink>
+                    <MDBNavLink to="/register/organizer"><MDBBtn color='link' className='white-text'>Become an Organizer</MDBBtn></MDBNavLink>
                   </MDBNavItem>
                   <MDBNavItem>
-                    <MDBNavLink to="/sign-in" ><MDBBtn color='link' style={this.style.anchor}>Sign In</MDBBtn></MDBNavLink>
+                    <MDBNavLink to="/sign-in" ><MDBBtn color='link' className='white-text'>Sign In</MDBBtn></MDBNavLink>
                   </MDBNavItem>
                   <MDBNavItem>
                     <MDBNavLink to="/register/user"><MDBBtn color='info' style={{margin:'0px',borderRadius:'7px'}}>Join</MDBBtn></MDBNavLink>

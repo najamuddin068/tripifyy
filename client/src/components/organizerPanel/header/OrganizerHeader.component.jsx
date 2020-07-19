@@ -56,7 +56,7 @@ class OrganizerHeader extends Component {
 
         return (
             <div>
-            <MDBNavbar  color="bg-default" scrolling dark expand="md" fixed="top"  >
+            <MDBNavbar  color="bg-dark" scrolling dark expand="md" fixed="top"  >
                 <MDBContainer fluid style={this.style.navContent} >
               <MDBNavbarBrand href="/" >
                 <span>TRIPifyy</span>
@@ -67,26 +67,22 @@ class OrganizerHeader extends Component {
                
                     <MDBNavbarNav left >
                     <MDBNavItem>
-                    <MDBNavLink to=""> Dashboard </MDBNavLink>
+                    <MDBNavLink to="">Dashboard</MDBNavLink>
+                  </MDBNavItem>
+                  <MDBNavItem>
+                    <MDBNavLink to="/organizer/trips">My Trips</MDBNavLink>
                   </MDBNavItem>
                   <MDBNavItem>
                     <MDBNavLink to="/organizer/myfeed">My Feed</MDBNavLink>
                   </MDBNavItem>
                   <MDBNavItem>
-                    <MDBNavLink to="#">Messages</MDBNavLink>
-                  </MDBNavItem>
-                  
-                  <MDBNavItem>
-                    <MDBNavLink to="#">Trips</MDBNavLink>
+                    <MDBNavLink to="/organizer/earnings">Earnings</MDBNavLink>
                   </MDBNavItem>
                   <MDBNavItem>
-                    <MDBNavLink to="#">Analytics</MDBNavLink>
+                    <MDBNavLink to="/organizer/messages">Messages</MDBNavLink>
                   </MDBNavItem>
                   <MDBNavItem>
-                    <MDBNavLink to="#">Earnings</MDBNavLink>
-                  </MDBNavItem>
-                  <MDBNavItem>
-                    <MDBNavLink to="#">Community</MDBNavLink>
+                    <MDBNavLink to="/organizer/notification">Notifications</MDBNavLink>
                   </MDBNavItem>
                   <MDBNavItem>
                         <MDBDropdown>
@@ -95,10 +91,8 @@ class OrganizerHeader extends Component {
                             </MDBDropdownToggle>
                             <MDBDropdownMenu className="dropdown-default">
                               
-                            <MDBDropdownItem href="#!">Tourist Request</MDBDropdownItem>
-                            <MDBDropdownItem href="#!">Create Trip</MDBDropdownItem>
-                            <MDBDropdownItem href="#!">Update Trip</MDBDropdownItem>
-                            <MDBDropdownItem href="#!">Report an issue</MDBDropdownItem>
+                            <MDBDropdownItem href="/organizer/create-trip">Create Trip</MDBDropdownItem>
+                            <MDBDropdownItem href="/organizer/help-center">Report an issue</MDBDropdownItem>
                             
                             </MDBDropdownMenu>
                         </MDBDropdown>
@@ -112,14 +106,9 @@ class OrganizerHeader extends Component {
                             <img src={organizer.avatar} style={this.style.userImage} alt=""/>
                             </MDBDropdownToggle>
                             <MDBDropdownMenu className="dropdown-default">
-                              
                             <MDBDropdownItem href="#!">View Profile</MDBDropdownItem>
                             <MDBDropdownItem href="#!" divider></MDBDropdownItem>
-                            <MDBDropdownItem href="#!">Saved</MDBDropdownItem>
-                            <MDBDropdownItem href="#!">Joined</MDBDropdownItem>
-                            <MDBDropdownItem href="#!" divider></MDBDropdownItem>
                             <MDBDropdownItem href="#!">Payments</MDBDropdownItem>
-                            <MDBDropdownItem href="#!">Customize Your Trips</MDBDropdownItem>
                             <MDBDropdownItem href="#!">Settings</MDBDropdownItem>
                             <MDBDropdownItem href="#!" divider></MDBDropdownItem>
                             <MDBDropdownItem href="#" onClick={this.onLogOutClick}>Sign Out</MDBDropdownItem>

@@ -11,41 +11,19 @@ import Footer from '../../components/organizerPanel/footer/Footer.component';
 import { getCurrentProfile } from '../../actions/organizerProfileActions'
 import PropTypes from 'prop-types'
 import OrganizerBio from '../../components/organizerPanel/body/dashboard/OrganizerBio.component';
+import OrganizerDashboardPanel from '../../components/organizerPanel/body/dashboard/OrganizerDashboardPanel.component';
 
 class Organizer extends Component {
-    componentDidMount(){
-        this.props.getCurrentProfile();
-        if(!this.props.auth.isOrganizer){
-            this.props.history.push('/sign-in')
-        }
-    }
+  
     render() {
         return (
             <div>
                 <OrganizerHeader/>
-                <MDBContainer fluid style={{padding: '30px 100px'}}>
-                <MDBRow>
-                    <MDBCol md='4'>
-                        <OrganizerSidebar/>
-                        <OrganizerInboxSidebar/>
-                    </MDBCol>
-                    <MDBCol md='8'>
-                        <OrganizerBio/>
-                        <ActiveTrips/>
-                    </MDBCol>
-                </MDBRow>
-                </MDBContainer>
+                <OrganizerDashboardPanel/>
                 
             </div>
         );
     }
 }
-Organizer.propType = {
-    getCurrentProfile: PropTypes.func.isRequired,
-    auth: PropTypes.object.isRequired,
-}
-const mapStateToProps = state => ({
-    auth: state.auth,
-})
 
-export default connect(mapStateToProps, {getCurrentProfile})(withRouter(Organizer));
+export default withRouter(Organizer);

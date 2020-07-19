@@ -8,6 +8,7 @@ import CustomiseTrip from '../../components/homepage/trips/CustomiseTrip.compone
 import Track from '../../components/homepage/track/Track.component';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
+import Footer from '../../components/homepage/footer/Footer.component';
 
 export class Home extends Component {
 

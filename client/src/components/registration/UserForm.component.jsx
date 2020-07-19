@@ -106,8 +106,6 @@ export class UserForm extends Component {
     resetFields = (...values) => {
         const temp =  Object.getOwnPropertyNames({...values[0]})
         temp.map(t=>this.setState({[t]:''}))
-     
-    
     }
     onSubmit = e => {
         e.preventDefault();

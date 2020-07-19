@@ -8,34 +8,27 @@ import CreateTripUser from './CreateTripUser.component';
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { getCurrentProfile } from '../../../../actions/userProfileActions'
+import ExploreTrips from './ExploreTrips.component';
+import {getTrips} from '../../../../actions/tripActions'
 
  
 export class UserHome extends Component {
 
     componentDidMount(){
-        this.props.getCurrentProfile();
+        this.props.getTrips()
     }
+
     
     render() {
         return (
             <div>
-               <FeaturedTrips/>
-               <RecentTrips/>
-               <PopularTrips/>
+
+                <ExploreTrips/>
                <CreateTripUser/>
             </div>
         );
     }
 }
 
-// UserHome.propTypes = {
-//     auth: PropTypes.object.isRequired,
-//     profile: PropTypes.object.isRequired
-// }
 
-// const mapStateToProps = state => ({
-//     profile: state.profile,
-//     auth: state.auth
-// })
-
-export default connect(null, {getCurrentProfile})(UserHome);
+export default connect(null, {getTrips})(UserHome);

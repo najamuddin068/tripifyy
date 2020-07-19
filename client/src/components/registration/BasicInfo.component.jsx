@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { MDBInput, MDBContainer, MDBRow, MDBCol, MDBBtn, MDBProgress, MDBLink, MDBBtnGroup } from 'mdbreact';
-import './BasicInfo.styles.scss'
 import classnames from 'classnames'
+import ValidationError from '../../common/ValidationError.component'
 export class BasicInfo extends Component {
 
     continue = e =>
@@ -27,7 +27,7 @@ export class BasicInfo extends Component {
                             value={values.firstName}
                             className = {classnames({'is-invalid':errors.firstName})}
                         />
-                       {errors.firstName && (<div className='validateError'>{errors.firstName}</div>)}
+                       {errors.firstName && (<ValidationError className='pl-4 ml-2' error={errors.firstName}/>)}
                        
                     </MDBCol>
                 <MDBCol>
@@ -40,7 +40,7 @@ export class BasicInfo extends Component {
                         value={values.lastName}
                         className = {classnames({'is-invalid':errors.lastName})}
                      />
-                         {errors.lastName && (<div className='validateError'>{errors.lastName}</div>)}
+                         {errors.lastName && (<ValidationError className='pl-4 ml-2' error={errors.lastName}/>)}
                 </MDBCol>
                 
                 </MDBRow>
@@ -56,7 +56,7 @@ export class BasicInfo extends Component {
                             className = {classnames({'is-invalid':errors.username})}
                             
                         />
-                            {errors.username && (<div className='validateError'>{errors.username}</div>)}
+                            {errors.username && (<ValidationError className='pl-4 ml-2' error={errors.username}/>)}
                     </MDBCol>
                 <MDBCol>
                     <MDBInput 
@@ -68,7 +68,7 @@ export class BasicInfo extends Component {
                         value={values.phone}
                         className = {classnames({'is-invalid':errors.phone})}
                     />
-                        {errors.phone && (<div className='validateError'>{errors.phone}</div>)}
+                        {errors.phone && (<ValidationError className='pl-4 ml-2' error={errors.phone}/>)}
                 </MDBCol>
                 
                 </MDBRow>
@@ -83,7 +83,7 @@ export class BasicInfo extends Component {
                             value={values.email}
                             className = {classnames({'is-invalid':errors.email})}
                         />
-                            {errors.email && (<div className='validateError'>{errors.email}</div>)}
+                            {errors.email && (<ValidationError className='pl-4 ml-2' error={errors.email}/>)}
                         </MDBCol>
                 </MDBRow>
                 <MDBRow>
@@ -97,7 +97,7 @@ export class BasicInfo extends Component {
                             value={values.password}
                             className = {classnames({'is-invalid':errors.password})}
                         />
-                            {errors.password && (<div className='validateError'>{errors.password}</div>)}
+                            {errors.password && (<ValidationError className='pl-4 ml-2' error={errors.password}/>)}
                     </MDBCol>
                 <MDBCol>
                     <MDBInput 
@@ -109,7 +109,7 @@ export class BasicInfo extends Component {
                         value={values.confirmPassword}
                         className = {classnames({'is-invalid':errors.confirmPassword})}
                     />
-                        {errors.confirmPassword && (<div className='validateError'>{errors.confirmPassword}</div>)}
+                        {errors.confirmPassword && (<ValidationError className='pl-4 ml-2' error={errors.confirmPassword}/>)}
             
                 </MDBCol>
                 

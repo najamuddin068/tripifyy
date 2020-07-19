@@ -36,7 +36,7 @@ class UFeedItem extends Component {
               
             </span>
             <span className="font-weight-light " style={{fontSize:'12px'}}>
-              {post.date}
+              {new Date(post.date).toLocaleString()}
               
             </span>
             </div>

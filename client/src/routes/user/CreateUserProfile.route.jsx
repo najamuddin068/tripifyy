@@ -6,11 +6,6 @@ import CreateProfile from '../../components/userPanel/body/profile/CreateProfile
 
 class CreateUserProfile extends Component {
 
-    componentDidMount(){
-        if(!this.props.auth.isAuthenticated){
-            this.props.history.push('/sign-in')
-        }
-    }
 
     render() {
         return (
@@ -21,8 +16,5 @@ class CreateUserProfile extends Component {
         );
     }
 }
-const mapStateToProps = state => ({
-    auth: state.auth
-})
 
-export default connect(mapStateToProps)(withRouter(CreateUserProfile));
+export default (withRouter(CreateUserProfile));

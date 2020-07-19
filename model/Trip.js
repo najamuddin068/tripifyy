@@ -17,7 +17,17 @@
     },
     numberOfDays:{
         type: Number,
+        required:true
     },
+    numberOfPeople:{
+        type:Number,
+        required:true
+    },
+    tripType:{
+        type:String,
+        required:true
+    },
+
     title:{
         type:String,
         required:true

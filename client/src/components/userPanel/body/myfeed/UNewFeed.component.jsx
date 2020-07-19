@@ -3,7 +3,7 @@ import UFeedItem from './UFeedItem.component';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types'
 import { getPosts } from '../../../../actions/postActions'
-import  USpinner  from './USpinner.component';
+import  Spinner  from '../../../../common/Spinner.component';
 import UPostFeed from './UPostFeed.component';
 class UNewFeed extends Component {
     componentDidMount(){
@@ -14,7 +14,7 @@ class UNewFeed extends Component {
         let postContent;
 
         if(posts === null || loading ){
-            postContent = <USpinner/>
+            postContent = <Spinner/>
         } else {
             postContent = <UPostFeed posts={posts}/>
         }

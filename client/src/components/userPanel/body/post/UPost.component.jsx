@@ -3,7 +3,7 @@ import "./UPost.styles.scss";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import { getPost } from "../../../../actions/postActions";
-import USpinner from "../myfeed/USpinner.component";
+import Spinner from "../../../../common/Spinner.component";
 import { withRouter, Link } from "react-router-dom";
 import {
   MDBContainer,
@@ -95,7 +95,7 @@ class UPost extends Component {
               </div>
             </div>
             <div className="d-flex flex-column justify-content-between align-items-end">
-              <div className="mt-0 pt-0 grey-text">{post.post.date}</div>
+              <div className="mt-0 pt-0 grey-text">{`${new Date(post.post.date).toLocaleString()}`}</div>
               <div className="mt-0 pt-0 grey-text">
                 {post.post.user === auth.user.id ? (
                   <Link

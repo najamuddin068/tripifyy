@@ -10,7 +10,7 @@ class SignIn extends Component {
             this.props.history.push('/user/dashboard')
         }
         if(this.props.auth.isOrganizer){
-            this.props.history.push('/register/dashboard')
+            this.props.history.push('/organizer/dashboard')
         }
     }
 

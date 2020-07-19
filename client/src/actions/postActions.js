@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-import {ADD_POST, GET_ERRORS, GET_POSTS,GET_POST, POST_LOADING, DELETE_POST} from './types'
+import {ADD_POST, GET_ERRORS, GET_POSTS,GET_POST, POST_LOADING, DELETE_POST, GET_POST_USER} from './types'
 
 
 export const addPost = postData => dispatch => {
@@ -26,6 +26,20 @@ export const getPosts = () => dispatch => {
         }))
         .catch(err => dispatch({
             type: GET_POSTS,
+            payload: null
+        }))
+}
+
+export const getPostsByUser = id => dispatch => {
+    dispatch(setPostLoading());
+    axios
+        .get(`/api/posts/user/${id}`)
+        .then(res => dispatch({
+            type: GET_POST_USER,
+            payload: res.data
+        }))
+        .catch(err => dispatch({
+            type: GET_POST_USER,
             payload: null
         }))
 }
@@ -71,6 +85,16 @@ export const likePostByID = id => dispatch => {
         .then(res => dispatch(getPost(id)))
         .catch(err => dispatch({
             type: GET_POST,
+            payload: null
+        }))
+}
+
+export const likePostByUser = (id, uid) => dispatch => {
+    axios
+        .post(`/api/posts/like/${id}`)
+        .then(res => dispatch(getPostsByUser(uid)))
+        .catch(err => dispatch({
+            type: GET_POST_USER,
             payload: null
         }))
 }

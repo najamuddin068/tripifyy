@@ -10,6 +10,8 @@ const Post = require('../../../model/Posts')
 const Profile = require('../../../model/Profile')
 const OProfile = require('../../../model/OProfile')
 
+const Notification = require('../../../model/Notification')
+
 // Post Validation
 const validatePostInput = require('../../../validation/post')
 
@@ -41,6 +43,16 @@ router.get('/:id',(req,res)=>{
         .catch(err => res.status(404).json(err))
 })
 
+router.get('/user/:id',(req,res)=>{
+    
+    Post.find({user: req.params.id})
+        .sort({date:-1})
+        .then(posts => res.json(posts)
+        )
+        .catch(err => res.status(404).json(err))
+    
+        
+})
 
 // @route POST api/posts
 // @desc Create Post
@@ -140,23 +152,39 @@ router.post('/like/:id',
         if(req.user.isUser){
             Profile.findOne({ user: req.user.id })
                 .then(profile =>{
-                    console.log
                     Post.findById(req.params.id)
                         .then(post => {
                             if(post.likes.filter(like => like.user+"" === req.user.id || like.user+"" === req.user.id).length>0){
                                 post.likes.shift({user:req.user.id})
-                                
+
                                 //return res.status(400).json({alreadyliked:'user already liked'})
                             }else{
                             post.likes.unshift({ user: req.user.id })
+
+                            const newNotification = new Notification({
+                                user:post.user,
+                                organizer:post.organizer,
+                                notification:{
+                                    likedBy: req.user.id,
+                                    link:post._id,
+                                    message:`${req.user.firstName} ${req.user.lastName} has liked your post`
+                                }
+                              });
+                            newNotification
+                            .save()
+                            .then((notification) => res.status(200))
+                            .catch(err=>console.log(err))
+                            
                             }
                             post.save().then(post => res.json(post))
-                            
+                            .catch(err=>console.log(err))
+                           
                         })
                         .catch(err => 
                             // res.status(404).json({ postnotfound: 'No post found'})
                             console.log(err)
                             )
+
                 })
             }else if(req.user.isOrganizer){
                 OProfile.findOne({ organizer: req.user.id })
@@ -171,6 +199,19 @@ router.post('/like/:id',
                                 }else{
                                     
                                 post.likes.unshift({ organizer: req.user.id })
+                                const newNotification = new Notification({
+                                    user:post.user,
+                                    organizer:post.organizer,
+                                    notification:{
+                                        likedBy: req.user.id,
+                                        link:post._id,
+                                        message:`${req.user.firstName} ${req.user.lastName} has liked your post`
+                                    }
+                                  });
+                                newNotification
+                                .save()
+                                .then((notification) => res.status(200))
+                                .catch(err=>console.log(err))
                                 }
                                 
                                 post.save().then(post => res.json(post))
@@ -203,7 +244,20 @@ router.post('/comment/:id',
                     post.comments.unshift(newComment)
 
                     post.save().then(post => res.json(post))
-
+                    const newNotification = new Notification({
+                        user:post.user,
+                        organizer:post.organizer,
+                        notification:{
+                            likedBy: req.user.id,
+                            link:post._id,
+                            message:`${req.user.firstName} ${req.user.lastName} has commented on your post`
+                        }
+                      });
+                    newNotification
+                    .save()
+                    .then((notification) => res.status(200))
+                    .catch(err=>console.log(err))
+                    
                 })
                 .catch (err => res.status(404).json({err}))
         } 
@@ -219,6 +273,19 @@ router.post('/comment/:id',
                     post.comments.unshift(newComment)
 
                     post.save().then(post => res.json(post))
+                    const newNotification = new Notification({
+                        user:post.user,
+                        organizer:post.organizer,
+                        notification:{
+                            likedBy: req.user.id,
+                            link:post._id,
+                            message:`${req.user.firstName} ${req.user.lastName} has commented on your post`
+                        }
+                      });
+                    newNotification
+                    .save()
+                    .then((notification) => res.status(200))
+                    .catch(err=>console.log(err))
 
                 })
                 .catch (err => res.status(404).json({err}))

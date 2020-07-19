@@ -36,6 +36,18 @@ router.get('/:id',(req,res)=>{
         .catch(err => res.status(404).json(err))
 })
 
+
+router.get('/organizer/:id',(req,res)=>{
+    
+    Trip.find({organizer: req.params.id})
+        .sort({date:-1})
+        .then(posts => res.json(posts)
+        )
+        .catch(err => res.status(404).json(err))
+    
+        
+})
+
 // @route POST api/posts
 // @desc Create Post
 // @access Private
@@ -58,13 +70,17 @@ router.post(
                     designation:req.body.designation,
                     departureDate:req.body.departureDate,
                     numberOfDays:req.body.numberOfDays,
+                    numberOfPeople:req.body.numberOfPeople,
+                    tripType:req.body.tripType,
                     title: req.body.title,
                     desc: req.body.desc,
                     image: req.body.image,
                     price:req.body.price,
                     name: `${req.user.firstName} ${req.user.lastName}`,
                     avatar: req.user.avatar,
-                    email:req.user.email
+                    email:req.user.email,
+                    
+                    
                 });
                 newTrip.save().then(post => res.json(post));
 
@@ -120,7 +136,21 @@ router.post('/join/:id',
                                 
                                return res.status(400).json({alreadyjoined:'user already joined'})
                             }
-                            post.likes.unshift({ user: req.user.id });
+                            trip.tourists.unshift({ user: req.user.id });
+                            const newNotification = new Notification({
+                                organizer:trip.organizer,
+                                notification:{
+                                    likedBy: req.user.id,
+                                    link:trip._id,
+                                    message:`${req.user.firstName} ${req.user.lastName} has joined your trip`
+                                }
+                              });
+                            newNotification
+                            .save()
+                            .then((notification) => res.status(200))
+                            .catch(err=>console.log(err))
+
+
 
                             trip.save().then(trip => res.json(trip))
                             

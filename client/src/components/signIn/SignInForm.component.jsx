@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { MDBInput, MDBBtn, MDBLink, MDBRow, MDBCol, MDBFormInline } from 'mdbreact';
 import classnames from 'classnames'
-import './SignInForm.styles.scss'
+import ValidationError from '../../common/ValidationError.component';
 
 export class SignInForm extends Component {
     render() {
@@ -46,7 +46,7 @@ export class SignInForm extends Component {
                             value={values.email}
                             className = {classnames({'is-invalid':errors.email})}/>
                             
-                            {errors.email && (<div className='validateError'>{errors.email}</div>)}
+                            {errors.email && (<ValidationError className='pl-4 ml-2' error={errors.email}/>)}
                     </MDBCol>
                 </MDBRow>    
                 <MDBRow>
@@ -59,7 +59,7 @@ export class SignInForm extends Component {
                             onChange={handleChange('password')}
                             value={values.password}
                             className = {classnames({'is-invalid':errors.password})}/>
-                            {errors.password && (<div className='validateError'>{errors.password}</div>)}
+                            {errors.password && (<ValidationError className='pl-4 ml-2' error={errors.password}/>)}
                     </MDBCol>
                 </MDBRow>
                 <div style={{marginTop:'20px'}}>
