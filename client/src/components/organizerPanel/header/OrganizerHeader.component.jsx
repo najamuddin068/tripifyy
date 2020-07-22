@@ -76,15 +76,15 @@ class OrganizerHeader extends Component {
                     <MDBNavLink to="/organizer/myfeed">My Feed</MDBNavLink>
                   </MDBNavItem>
                   <MDBNavItem>
-                    <MDBNavLink to="/organizer/earnings">Earnings</MDBNavLink>
-                  </MDBNavItem>
-                  <MDBNavItem>
-                    <MDBNavLink to="/organizer/messages">Messages</MDBNavLink>
-                  </MDBNavItem>
-                  <MDBNavItem>
                     <MDBNavLink to="/organizer/notification">Notifications</MDBNavLink>
                   </MDBNavItem>
                   <MDBNavItem>
+                    <MDBNavLink to="/organizer/create-trip">Create Trip</MDBNavLink>
+                  </MDBNavItem>
+                  <MDBNavItem>
+                    <MDBNavLink to="/organizer/help-center">Report An Issue</MDBNavLink>
+                  </MDBNavItem>
+                  {/* <MDBNavItem>
                         <MDBDropdown>
                             <MDBDropdownToggle nav>
                                 <div>More</div>
@@ -96,7 +96,7 @@ class OrganizerHeader extends Component {
                             
                             </MDBDropdownMenu>
                         </MDBDropdown>
-                        </MDBNavItem>
+                        </MDBNavItem> */}
                  
                         </MDBNavbarNav>
                         <MDBNavbarNav right>

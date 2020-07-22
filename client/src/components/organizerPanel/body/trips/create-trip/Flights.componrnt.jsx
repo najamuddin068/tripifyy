@@ -1,8 +1,12 @@
 import React, { Component } from "react";
 import { MDBBtn, MDBRow, MDBCol, MDBInput, MDBFormInline } from "mdbreact";
 import DatePicker from "react-datepicker";
+import {bookFlight} from '../../../../../actions/apiActions'
+import { connect } from "react-redux";
+import { Link } from "react-router-dom";
 
-export default class Flights extends Component {
+
+class Flights extends Component {
   continue = (e) => {
     e.preventDefault();
     this.props.nextStep();
@@ -11,6 +15,20 @@ export default class Flights extends Component {
     e.preventDefault();
     this.props.prevStep();
   };
+
+  onSubmit= e => {
+    e.preventDefault()
+    const data ={
+      flightFrom : this.props.values.flightFrom,
+      flightTo: this.props.values.flightTo,
+      flightTravellors: this.props.values.flightTravellors,
+      flightDepart: `${new Date(this.props.values.flightDepart).getFullYear()}-0${new Date(this.props.values.flightDepart).getMonth()+1}-${new Date(this.props.values.flightDepart).getDate()}`
+
+
+    }
+   // console.log(data)
+    this.props.bookFlight(data)
+  }
 
   render() {
     const {
@@ -23,6 +41,7 @@ export default class Flights extends Component {
     } = this.props;
     const {flightFrom, flightTo, way, flightDepart, flightReturn} = values
     const flightData = {flightFrom, flightTo, way, flightDepart, flightReturn}
+    const {flights} = this.props
     return (
       <div>
         <div className="ml-5 mr-5 pt-2">
@@ -68,8 +87,8 @@ export default class Flights extends Component {
                   <div className='d-flex'>
                   <MDBInput
                     label="Travelors"
-                    value={values.flightTo}
-                    onChange={handleChange("flightTo")}
+                    value={values.flightTravellors}
+                    onChange={handleChange("flightTravellors")}
                     outline
                   />
                         <span className='mr-4'/>
@@ -87,12 +106,17 @@ export default class Flights extends Component {
                     onChange={handleDate("flightReturn")}
                     placeholderText="Return Date"
                     minDate={values.flightDepart}
-                    disabled={values.way===2 ? true : false}
+                    disabled={values.way===1 ? true : false}
                     className="mt-4 pl-2 pr-2 pb-1 pt-2  w-100 border border-light rounded"
                   />
                               
                 
                  
+                  </div>
+                  
+                  <div>
+                  {flights.partner_url ? <a  className='btn btn-info'href={flights.partner_url} target='_blank'>Book Now</a> : <MDBBtn color='info' onClick={this.onSubmit}>Search Flights</MDBBtn>}
+                    
                   </div>
                   <div className='d-flex justify-content-between'>
                     <MDBBtn color='link' onClick={ ()=>resetFields({...flightData}) } className='blue-text'>Reset Fields</MDBBtn>
@@ -114,3 +138,7 @@ export default class Flights extends Component {
     );
   }
 }
+const mapStateToProps = state => ({
+  flights: state.api.flights
+})
+export default connect(mapStateToProps, {bookFlight}) (Flights) 

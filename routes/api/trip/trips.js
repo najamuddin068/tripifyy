@@ -32,6 +32,8 @@ router.get('/',(req,res)=>{
 
 router.get('/:id',(req,res)=>{
     Trip.findById(req.params.id)
+    .populate('organizer', ['firstName','lastName', 'avatar', 'email'])
+
         .then(trip => res.json(trip))
         .catch(err => res.status(404).json(err))
 })
@@ -76,9 +78,6 @@ router.post(
                     desc: req.body.desc,
                     image: req.body.image,
                     price:req.body.price,
-                    name: `${req.user.firstName} ${req.user.lastName}`,
-                    avatar: req.user.avatar,
-                    email:req.user.email,
                     
                     
                 });
@@ -129,14 +128,19 @@ router.post('/join/:id',
             Profile.findOne({ user: req.user.id })
                 .then(profile =>{
                     
+                    
                     Trip.findById(req.params.id)
+                    
+
                         .then(trip => {
                             if(trip.tourists.filter(tourist => tourist.user+"" === req.user.id || tourist.user+"" === req.user.id).length>0){
                                
                                 
                                return res.status(400).json({alreadyjoined:'user already joined'})
                             }
-                            trip.tourists.unshift({ user: req.user.id });
+                            trip.tourists.unshift({ user: req.user.id })
+                            
+                            
                             const newNotification = new Notification({
                                 organizer:trip.organizer,
                                 notification:{

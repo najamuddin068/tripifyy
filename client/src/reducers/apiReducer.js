@@ -1,8 +1,10 @@
-import { GET_LOCATION, GET_RESTAURANTS } from "../actions/types"
+import { GET_LOCATION, GET_RESTAURANTS, GET_HOTELS,GET_FLIGHTS } from "../actions/types"
 
 const initialState = {
     location:[],
     restaurants:[],
+    hotels:[],
+    flights:[]
 }
 
 export default function (state = initialState, action){
@@ -18,6 +20,17 @@ export default function (state = initialState, action){
                 ...state,
                 restaurants: action.payload,
             }   
+
+        case GET_HOTELS:
+            return {
+                ...state,
+                hotels: action.payload
+            }
+        case GET_FLIGHTS:
+            return {
+                ...state,
+                flights:action.payload
+            }
         default: 
             return state
     }

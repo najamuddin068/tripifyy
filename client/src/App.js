@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.scss';
 import Home from './routes/guests/Home.route';
-import {BrowserRouter, Route, Switch, withRouter } from 'react-router-dom';
+import {Route, Switch, withRouter } from 'react-router-dom';
 import Admin from './routes/admin/Admin.route';
 import UserRegistraion from './routes/registeration/UserRegistraion.route';
 import OrganizerRegistration from './routes/registeration/OrganizerRegistration.route';
@@ -13,8 +12,6 @@ import { applyMiddleware, createStore } from 'redux';
 import jwt_decode from 'jwt-decode';
 import setAuthToken from './utils/setAuthToken'
 import {setCurrentUser, setCurrentOrganizer} from './actions/authActions';
-import {SET_CURRENT_USER} from './actions/types'
-import {initialState} from './reducers/authReducer'
 import store from './store';
 import PropTypes from 'prop-types'
 import {connect} from 'react-redux'
@@ -39,6 +36,8 @@ import OrganizerCreateTrip from './routes/organizer/OrganizerCreateTrip.route';
 import OrganizerMessage from './routes/organizer/OrganizerMessage.route';
 import OrganizerAnalytics from './routes/organizer/OrganizerAnalytics.route';
 import OrganizerEarnings from './routes/organizer/OrganizerEarnings.route';
+import OrganizerTripDashboard from './routes/organizer/OrganizerTripDashboard.component';
+import InlineCartPage from './components/userPanel/payment/InlineCartPage';
 
 class App extends Component {
 
@@ -89,15 +88,17 @@ render(){
             <PrivateUserRoute exact path='/user/profiles' component={withRouter(UProfiles)}/>
             <PrivateUserRoute exact path='/user/:id' component={withRouter(GetUserProfile)}/>
             <PrivateOrganizerRoute exact path='/organizer/trips' component={withRouter(OrganizerTrips)}/>
+            <PrivateOrganizerRoute exact path='/organizer/trips/:id' component={withRouter(OrganizerTripDashboard)}/>
             <PrivateOrganizerRoute exact path='/organizer/messages' component={withRouter(OrganizerMessage)}/>
             <PrivateOrganizerRoute exact path='/organizer/create-trip' component={withRouter(OrganizerCreateTrip)}/>
             <PrivateOrganizerRoute exact path='/organizer/notification' component={withRouter(OrganizerAnalytics)}/>
             <PrivateOrganizerRoute exact path='/organizer/earnings' component={withRouter(OrganizerEarnings)}/>
             <PrivateOrganizerRoute exact path='/organizer/help-center' component={withRouter(OrganizerEarnings)}/>
 
-            <Route exact path='/test' component={withRouter(Test)} />
+            {/* <Route exact path='/test' component={withRouter(Test)} /> */}
 
           </Switch>
+          <Footer/>
     </div>
   );
 }

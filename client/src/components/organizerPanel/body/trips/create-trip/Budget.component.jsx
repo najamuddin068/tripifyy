@@ -19,10 +19,15 @@ export default class Budget extends Component {
         <div className="ml-5 mr-5 pt-2">
         <h3>Budget Info</h3>
         <hr />
-        <MDBRow center className="bg-white rounded ml-1 mr-1">
+        <div>
+        <div className='d-flex flex-row-reverse'>
+        <MDBBtn color='link'>Estimate Budget</MDBBtn>
+        </div>
+        <MDBRow center  className="bg-white rounded ml-1 mr-1" >
+            
             <MDBCol>
                 <MDBInput
-                    label="Price"
+                    label="Price Per Person"
                     value={values.price}
                     onChange={handleChange("price")}
                     outline
@@ -32,6 +37,7 @@ export default class Budget extends Component {
 
             </MDBCol>
         </MDBRow>
+        </div>
 
         <div className='d-flex flex-row-reverse'>
             

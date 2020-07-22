@@ -39,7 +39,7 @@ export default class TripCard extends Component {
           <MDBCardBody className='pt-0'>
               <div className='d-flex justify-content-between align-items-center'>
     <MDBCardTitle className='m-0 p-0'>{trip.title}</MDBCardTitle>
-            <Link to=''>View</Link>
+            <Link to={`/organizer/trips/${trip._id}`}>View</Link>
             </div>
             <hr/>
             <MDBCardText>

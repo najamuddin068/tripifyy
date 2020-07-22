@@ -9,7 +9,7 @@ import {
   MDBIcon,
 } from "mdbreact";
 import { connect } from "react-redux";
-import { sendMessage, receiveMessages } from "../../../../actions/messageActions";
+// import { sendMessage, receiveMessages } from "../../../../actions/messageActions";
 import MessageRoom from "./MessageRoom.component";
 import MessageChat from "./MessageChat.component";
 
@@ -69,4 +69,6 @@ const mapStateToProps = (state) => ({
   profile: state.profile,
   message: state.message
 });
-export default connect(mapStateToProps, {sendMessage, receiveMessages})(Messages);
+export default connect(mapStateToProps,
+  //  {sendMessage, receiveMessages}
+   )(Messages);

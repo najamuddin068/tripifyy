@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { MDBInputGroup, MDBBtn, MDBIcon } from "mdbreact";
-import { receiveAllMessage } from '../../../../actions/messageActions'
+// import { receiveAllMessage } from '../../../../actions/messageActions'
 import { connect } from "react-redux";
 import PropTypes from 'prop-types'
 class MessageChat extends Component {
@@ -126,4 +126,6 @@ const mapStateToProps = (state) => ({
   message: state.message,
   auth: state.auth,
 });
-export default connect(mapStateToProps, {receiveAllMessage})(MessageChat);
+export default connect(mapStateToProps, 
+  // {receiveAllMessage}
+  )(MessageChat);

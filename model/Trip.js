@@ -39,15 +39,6 @@
         type: String,
         required: true
     },
-    email:{
-        type:String,
-    },
-    name: {
-        type: String
-    },
-    avatar: {
-        type: String
-    },
     price: {
         type: Number,
     },

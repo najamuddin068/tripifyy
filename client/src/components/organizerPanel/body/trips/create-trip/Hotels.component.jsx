@@ -2,7 +2,9 @@ import React, { Component } from "react";
 import Hotel from "./Hotel.component";
 import { MDBBtn, MDBIcon } from "mdbreact";
 import { connect } from "react-redux";
-import { getLocation } from "../../../../../actions/apiActions";
+import DatePicker from "react-datepicker";
+
+import { getLocation, getHotels } from "../../../../../actions/apiActions";
 
 import SearchBar from "../../../../../common/SearchBar.component";
 class Hotels extends Component {
@@ -13,9 +15,7 @@ class Hotels extends Component {
     };
   }
 
-  componentDidMount() {
-
-    }
+  
   continue = (e) => {
     e.preventDefault();
     this.props.nextStep();
@@ -33,10 +33,18 @@ class Hotels extends Component {
 
   handleSubmit = e => {
       e.preventDefault()
-      this.props.getLocation(this.state.search)
+      const data = {
+        location: this.state.search,
+        checkin: `${new Date(this.props.values.checkin).getFullYear()}-${new Date(this.props.values.checkin).getMonth()+1}-${new Date(this.props.values.checkin).getDate()}`
+      }
+      this.props.getHotels(data)
+      
+      
   }
   render() {
     const { search } = this.state;
+    const {values, handleDate, hotels} = this.props
+
     return (
       <div className="ml-5 mr-5 pt-2">
         <div className="d-flex justify-content-between align-items-center">
@@ -47,6 +55,7 @@ class Hotels extends Component {
         </div>
         <hr />
         <div className="d-flex flex-row-reverse">
+          
           <SearchBar
             iconColor="text-info"
             placeholder="Enter City"
@@ -55,10 +64,16 @@ class Hotels extends Component {
             onClick={this.handleSubmit}
             
           />
-
+             
         </div>
-        <Hotel />
-        <Hotel />
+        <DatePicker
+                  selected={values.checkin}
+                  onChange={handleDate("checkin")}
+                  placeholderText="Check In"
+                  minDate={new Date()}
+                  className="mt-4 pl-2 pr-2 pb-1 pt-1 w-100 border border-light rounded"
+                />
+        {hotels && hotels.map(hotel=> <Hotel key={hotel.location_id} hotel={hotel}/>)}
         <div className="d-flex flex-row-reverse">
           <MDBBtn
             color="link"
@@ -82,5 +97,7 @@ class Hotels extends Component {
     );
   }
 }
-
-export default connect(null,{getLocation})(Hotels);
+const mapStateToProps = state => ({
+  hotels: state.api.hotels
+})
+export default connect(mapStateToProps,{getLocation, getHotels})(Hotels);

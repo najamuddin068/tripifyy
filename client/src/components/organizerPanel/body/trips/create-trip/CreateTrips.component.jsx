@@ -32,6 +32,8 @@ class CreateTrips extends Component {
       flightTravellors:'',
       way: '',
 
+      checkin:null,
+
       price:'',
 
 
@@ -143,6 +145,7 @@ class CreateTrips extends Component {
       numberOfPeople,
       tripType,
       price,
+      
 
       errors: {}
     }
@@ -189,6 +192,7 @@ class CreateTrips extends Component {
           prevStep={this.prevStep}
           resetFields={this.resetFields}
           values = {values}
+          handleDate = {this.handleDate}
 
 
         />
@@ -244,7 +248,8 @@ class CreateTrips extends Component {
       flightReturn,
       flightTravellors,
       way,
-      price
+      price,
+      checkin
 
     } = this.state;
     const values = {
@@ -261,7 +266,8 @@ class CreateTrips extends Component {
       flightReturn,
       flightTravellors,
       way,
-      price
+      price,
+      checkin
     }
 
       return (

@@ -3,7 +3,7 @@ import Restaurant from "./Restaurant.component";
 import { MDBBtn } from "mdbreact";
 import SearchBar from "../../../../../common/SearchBar.component";
 import { connect } from "react-redux";
-import { getLocation, getRestaurants } from "../../../../../actions/apiActions";
+import { getRestaurants} from "../../../../../actions/apiActions";
 class Restaurants extends Component {
   constructor(props) {
     super(props);
@@ -12,11 +12,7 @@ class Restaurants extends Component {
     };
   }
   componentWillReceiveProps(nextProps) {
-    // if (nextProps.api.location) {
-    //   this.props.getRestaurants(
-    //     nextProps.api.location.result_object.location_id
-    //   );
-    // }
+ 
   }
   continue = (e) => {
     e.preventDefault();
@@ -39,7 +35,7 @@ class Restaurants extends Component {
   handleSubmit = e => {
       e.preventDefault()
 
-      this.props.getLocation(this.state.search)
+       this.props.getRestaurants(this.state.search)
 
   }
 
@@ -66,8 +62,7 @@ class Restaurants extends Component {
           />
         </div>
 
-        <Restaurant />
-        <Restaurant />
+        {restaurants && restaurants.map(restaurant => <Restaurant key={restaurant.location_id} restaurant= {restaurant}/>)}
 
         <div className="d-flex flex-row-reverse">
           <MDBBtn
@@ -94,6 +89,4 @@ class Restaurants extends Component {
 const mapStateToProps = (state) => ({
   api: state.api,
 });
-export default connect(mapStateToProps, { getLocation, getRestaurants })(
-  Restaurants
-);
+export default connect(mapStateToProps, {getRestaurants})(Restaurants);

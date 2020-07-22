@@ -3,26 +3,27 @@ const Schema = mongoose.Schema;
 
 const MessageSchema = new Schema({
 
-      sender: {
-          type: Schema.Types.ObjectId,
-          ref: 'users'
+      room: {
+          type: String,
+          required: true
         },
-      receiver: {
-        type: Schema.Types.ObjectId,
-        ref: 'users'
-      },
-      text: {
-        type: String,
-      },
-      name: {
-        type: String
-      },
-      senderAvatar: {
-        type: String
-      },
-      receiverAvatar:{
-        type: String
-      }
+      messages: [
+        {
+          user: {
+            type: Schema.Types.ObjectId,
+            ref: 'users'
+          },
+          organizer: {
+            type: Schema.Types.ObjectId,
+            ref: 'organizer'
+          },
+          message: {
+             type: String,
+             required: true
+          }
+        }
+      ]
+        
 })
 
 module.exports = Message = mongoose.model('message', MessageSchema);

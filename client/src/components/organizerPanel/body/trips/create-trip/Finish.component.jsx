@@ -11,9 +11,14 @@ export default class Finish extends Component {
         const {handleSubmit} = this.props
         return (
             <div className="ml-5 mr-5 pt-2">
+               
         <h3>Finish</h3>
         <hr />
-        
+
+        <h5 className='mt-5'>
+        Your Trip is Completed 
+        </h5>
+        <br/>
         <MDBBtn color='info' onClick={handleSubmit}>Submit</MDBBtn>
         <div className='d-flex flex-row-reverse'>
             

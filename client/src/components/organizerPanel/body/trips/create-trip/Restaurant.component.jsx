@@ -18,6 +18,7 @@ export default class Hotel extends Component {
     super(props);
   }
   render() {
+    const {restaurant} = this.props
     return (
       <div>
 
@@ -26,7 +27,7 @@ export default class Hotel extends Component {
             <MDBCol md="6">
               <MDBCarousel
                 activeItem={1}
-                length={3}
+                length={1}
                 showControls={true}
                 showIndicators={true}
                 className="z-depth-1"
@@ -36,59 +37,46 @@ export default class Hotel extends Component {
                     <MDBView>
                       <img
                         className="d-block w-100"
-                        src="https://mdbootstrap.com/img/Others/documentation/img%20(136)-mini.jpg"
+                        src={restaurant && restaurant.photo && restaurant.photo.images && restaurant.photo.images.original && restaurant.photo.images.original.url}
                         alt="First slide"
                       />
                       <MDBMask overlay="black-light" />
                     </MDBView>
                   </MDBCarouselItem>
-                  <MDBCarouselItem itemId="2">
-                    <MDBView>
-                      <img
-                        className="d-block w-100"
-                        src="https://mdbootstrap.com/img/Others/documentation/img%20(137)-mini.jpg"
-                        alt="Second slide"
-                      />
-                      <MDBMask overlay="black-light" />
-                    </MDBView>
-                  </MDBCarouselItem>
-                  <MDBCarouselItem itemId="3">
-                    <MDBView>
-                      <img
-                        className="d-block w-100"
-                        src="https://mdbootstrap.com/img/Others/documentation/img%20(141)-mini.jpg"
-                        alt="Third slide"
-                      />
-                      <MDBMask overlay="black-light" />
-                    </MDBView>
-                  </MDBCarouselItem>
+                 
                 </MDBCarouselInner>
               </MDBCarousel>
             </MDBCol>
             <MDBCol md="6">
               <div className="d-flex flex-column justify-content-between h-100">
                 <div>
-                    <h4>Roaster</h4>
+    <h4>{restaurant.name}</h4>
 
                   <div className="mb-2">
-                    address: h24, st#2, pk rd, islamabad
+                    address: {restaurant.address}
                   </div>
                 </div>
                 <div className="d-flex flex-column">
                     <span>
-                    <h5>Price: 1500</h5>
+    <h5>phone: {restaurant.phone}</h5>
+                    </span>
+                    <span>
+    {restaurant.email && <h5>email: {restaurant.email}</h5>}
+                    </span>
+                    <span>
+    {restaurant.price && <h5>email: {restaurant.price}</h5>}
                     </span>
                     <div className='d-flex align-items-center'>
 
                     <span>
                     <StarRatings
-                      rating={2.403}
+                      rating={4.2}
                       starDimension="28px"
                       starSpacing="0px"
                       starRatedColor="#FFC007"
                     />
                     </span>
-                    <span className="ml-2">1726 reviews</span>
+                    <span className="ml-2">{restaurant.num_reviews} reviews</span>
                     <span>
                      <MDBBtn color='link' className='blue-text'>Book</MDBBtn>
                      </span>
