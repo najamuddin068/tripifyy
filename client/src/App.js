@@ -23,10 +23,8 @@ import OrganizerPost from './routes/organizer/OrganizerPost.route';
 import Footer from './components/homepage/footer/Footer.component';
 import UserFeed from './routes/user/UserFeed.route';
 import UserPost from './routes/user/UserPost.route';
-import UserProfile from './components/userPanel/body/profile/UserProfile.component';
 import UProfile from './routes/user/UProfile.route';
 import PrivateUserRoute from './common/PrivateUserRoute';
-import Test from './components/Test';
 import UMessages from './routes/user/UMessages.route';
 import UProfiles from './routes/user/UProfiles.route';
 import GetUserProfile from './routes/user/GetUserProfile.route';
@@ -37,7 +35,6 @@ import OrganizerMessage from './routes/organizer/OrganizerMessage.route';
 import OrganizerAnalytics from './routes/organizer/OrganizerAnalytics.route';
 import OrganizerEarnings from './routes/organizer/OrganizerEarnings.route';
 import OrganizerTripDashboard from './routes/organizer/OrganizerTripDashboard.component';
-import InlineCartPage from './components/userPanel/payment/InlineCartPage';
 
 class App extends Component {
 

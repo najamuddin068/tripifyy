@@ -9,14 +9,13 @@ class Test extends Component {
         super(props)
     }
     componentDidMount(){
-        
         axios({
             "method":"GET",
             "url":"https://tripadvisor1.p.rapidapi.com/locations/search",
             "headers":{
             "content-type":"application/octet-stream",
             "x-rapidapi-host":"tripadvisor1.p.rapidapi.com",
-            "x-rapidapi-key":"03b848afb0msha995cacabbffb63p1efedbjsnc5cedc2e29a9",
+            "x-rapidapi-key":"e7ef4b7f4fmsha84c81451e000f5p1cc531jsnfbb458282400",
             "useQueryString":true
             },"params":{
             "location_id":"1",

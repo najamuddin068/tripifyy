@@ -3,6 +3,11 @@ import {GET_MESSAGE, GET_MESSAGES, GET_ALL_MESSAGES} from './types'
 
 const socket = io('http://localhost:5000/')
 
+export const onJoin = data => dispatch => {
+    socket.emit('onJoin', data)
+    
+}
+
 // export const sendMessage = data => dispatch =>{
 //     socket.emit('sendMessage', data)
 //     socket.on('receiveSentMessage', message => dispatch({

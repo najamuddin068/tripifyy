@@ -30,5 +30,9 @@ const Message = require('../../../model/Message');
 //         .catch(err => res.status(404).json(err))
 // })
 
+const createRoom = () =>{
+  
+}
+
 
   module.exports = router;
